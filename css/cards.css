@@ -48,7 +48,7 @@ svg {
 }
 
 b {
-	color: hsla(225, 90%, 40%, 1);;
+	color: hsla(225, 90%, 40%, 1);
 }
 
 .card-back-title {
@@ -57,7 +57,7 @@ b {
 	font-size: 295px;
 	color: black;
 font-family: logoFont;
-	
+vertical-align: bottom;
 }
 
 
@@ -73,6 +73,7 @@ font-family: logoFont;
 
 #license {
 	font-size: 30px;
+	display: inline-block;
 }
 
 #signature {
@@ -246,6 +247,10 @@ canvas {
 .socket-col-side {
 
 flex: .01;
+display: flex;
+flex-direction: row;
+align-items: center;
+gap: 8px;
 }
 
 .socket-col-main {
@@ -356,4 +361,46 @@ display: flex;
 .scenario-constraint {
 	padding: 5px;
 
+}
+
+.card-inputmod {
+    background-color: hsla(235, 0%, 100%, 1);
+}
+
+.card-outputmod {
+    background-color: hsla(325, 40%, 100%, 1);
+}
+
+.card-transformmod {
+    background-color: hsla(280, 20%, 100%, 1);
+    padding-left: 162px;
+}
+
+.card-transformmod::before {
+    content: "";
+    position: absolute;
+    left: 32px;
+    top: 32px;
+    bottom: 32px;
+    width: 130px;
+    background-color: hsla(155, 50%, 80%, 1);
+    border-radius: 10px 0 0 10px;
+}
+
+.card-transformmod.card-bordered {
+    background-color: white;
+}
+
+.card-transformmod.card-bordered::before {
+    left: 22px;
+    top: 22px;
+    bottom: 22px;
+}
+
+.scenario-dark .scenario-title {
+    color: white;
+}
+
+.scenario-dark .scenario-constraint {
+    color: hsla(0, 0%, 100%, 0.9);
 }

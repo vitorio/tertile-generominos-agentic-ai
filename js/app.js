@@ -64,7 +64,7 @@ function createCheatSheet() {
 	}).appendTo(infoHeader)
 
 	var subtitle = $("<div/>", {
-		html: "generative ideation cards by GalaxyKate<br>www.galaxykate.com/generominos<br><span id='license'>Creative Commons under the <a href='http://creativecommons.org/licenses/by-sa/4.0/'>Attribution-ShareAlike 4.0 International</a> license<br>Copyright Kate Compton, 2017</span>",
+		html: "generative ideation cards by GalaxyKate<br>www.galaxykate.com/generominos<br><span id='license'><br>Creative Commons under the <a href='http://creativecommons.org/licenses/by-sa/4.0/'>Attribution-ShareAlike 4.0 International</a> license<br><br>Copyright Kate Compton, 2017<br>Agentic AI cards copyright 2026 Tertile, LLC<br><br></span>",
 		class: "card-back-subtitle",
 	}).appendTo(infoHeader)
 
@@ -129,15 +129,21 @@ function createScenarios() {
 			class: "scenario card"
 		}).appendTo($("#scenario-holder"))
 
-		var h2 = index * 23;
-		var h1 = index * 23 + 20;
+		var isDark = data.dark === true;
+		var hue = data.hue !== undefined ? data.hue : index * 23;
 
-		div.css({
-			background: "hsla(" + h2 + ", 90%, 90%, 1)",
-			border: "10px solid hsla(" + h2 + ", 90%, 80%, 1)"
-		})
-
-
+		if (isDark) {
+			div.addClass("scenario-dark");
+			div.css({
+				background: "hsla(" + hue + ", 70%, 22%, 1)",
+				border: "10px solid hsla(" + hue + ", 80%, 12%, 1)",
+			});
+		} else {
+			div.css({
+				background: "hsla(" + hue + ", 90%, 90%, 1)",
+				border: "10px solid hsla(" + hue + ", 90%, 80%, 1)"
+			});
+		}
 
 		var header = $("<div/>", {
 			class: "scenario-title",

@@ -1,73 +1,143 @@
 /* 
  * Create new scenarios
  * Each scenarion has a title and constraints (line breaks as |)
+ * Dark variant (white text) scenarios represent harnesses ("dark" and "hue")
  */
 
 var scenarios = [{
-		title: "Science Museum installation",
-		constraints: "Teach something about science | maximum durability, loud boisterous environment | • Usable by children age 4-16 (consider height, control-complexity, and number of interactors)"
-	}, {
-		title: "Rock concert game",
-		constraints: "A game to be played on a big screen by crowds at a rock concert if the band is late | • Assume 4000 drunk, loud players and 4000 drunk loud non-players | • It is dark, loud, and everyone has a cell phone"
-	}, {
-		title: "Seventh Inning stretch",
-		constraints: "A game to be played on a big screen at a ballpark during a break |• How many people can play at a time? | • Many people are sitting with their families and friends | • Consider the 'kiss cam'"
-	}, {
-		title: "Public park bench",
-		constraints: "Outdoor long-term installation of an interactive bench | • Maximum durabiity, weatherproofness, resistance to theft | • Has to be powered by a small solar panel | • Needs to still function as a bench"
-	}, {
-		title: "County Fair game",
-		constraints: "You have a booth at a county fair for one day | • Bright sunshine, large crowds of families | • You can charge $1 per play | Can you earn money?"
-	}, {
-		title: "An enrichment game for bored pigs on farms",
-		constraints: "Playable by pigs and networked humans (or just pigs) | • Low maintenance | • Pigs can follow bright lights, but don't understand images",
-		link: "https://www.polygon.com/2012/10/29/3572848/the-philosophy-of-playing-with-your-food"
-	}, {
-		title: "A game for orangutans",
-		constraints: "Orangutans are enormously strong (they can snap an iPad) and can be dangerous to trainers | • Orangutans can recognize shapes, but have to be trained to understand cause-and-effect logic | • They have good hearing, color vision, and love to touch strange objects",
-		link: "http://www.bbc.co.uk/newsround/35583313"
-	}, {
-		title: "An installation for a cat shelter",
-		constraints: "Playable by many cats at the shelter, for a few hours at a time (with human supervision) | • Should make the cats look cute on webcams to encourage adoption | • Can humans play with the cats remotely?",
-	}, {
-		title: "Decrease loneliness in senior centers",
-		constraints: "Make an installation to be installed in many senior centers to help seniors socialize with each other | • Design for limited mobility, eyesight, strength| • Design for no prior video game experience",
-	}, {
-		title: "Creativity for senior centers",
-		constraints: "Creativity is linked to positive aging outcomes.  Design a way for seniors to make art, and feel proud of their work | • Design for limited mobility, eyesight, strength| • Design for no prior video game experience",
-	}, {
-		title: "An art installation for a hospital atrium",
-		constraints: "Make an installation that can be interacted with quickly, or just appreciated as people walk through an atrium | • The environment is stressful and noisy, design something calming | • For sanitation, no touching the art is allowed",
-	}, {
-		title: "An installation for a department store window",
-		constraints: "Usable by passing people from behind the glass window | • Attract attention from across the street | • The funders want people to engage the brand on social media | How will people realize it's interactive?",
-	}, {
-		title: "Indiecade 'soaker'",
-		constraints: "Indiecade has commissioned you to show a game | • It has to absorb 100 players per hour | • You can choose whether its played at day or at night"
-	}, {
-		title: "Airport game",
-		constraints: "A game that can be played while waiting at the luggage carousel | • Played on a screen or other sculpture in the center of the carousel | • Everyone has luggage with them, can you use that?"
-	}, {
-		title: "Rollercoaster queue game",
-		constraints: "A game to be played while in line at an amusement park | • People will be moving though the space for an hour or more | • Consider groups of friends, families or strangers"
-	}, {
-		title: "Stair game",
-		constraints: "A game or artwork to be installed in the back staircase in your office | • Get more people to take the stairs | • Don't impede people who don't want to play | • Installed for a day, or over months?"
-	}, {
-		title: "Everybody recycle!",
-		constraints: "An commission to be installed in a recycling can in a park | • Make recycling fun | • Ideally: get people to tweet about recycling"
-	}, {
-		title: "Stroke rehab game",
-		constraints: "A commission for an installation in a stroke rehab center | • Encourage people of many different physical abilities (and wheelchairs) to move more"
-	}, {
-		title: "Finals Week Stress Relief",
-		constraints: "Your college wants you to make a stress relief game to be played by students each day at 6pm during finals week | • Should handle 200+ students | • Budget $200"
-	}, {
-		title: "Gym game",
-		constraints: "A gym has commissioned an digital game to attract people to the gym | to be installed next to the cardio machines | • It should make working out fun | • It should stand up to sweaty, energetic people"
-	}, {
-		title: "Musical improv",
-		constraints: "A string quartet (or rockband, or jazz trio) wants some digital art to respond to their music | • Should respond to their music | • Should be engaging to the audience | • Will only be played during a few concerts"
-	}
+    title: "What do we already know?",
+    constraints:
+      "The team is about to start a new project and needs a summary of existing research | • The landscape includes published literature, internal past studies, competitor products, and social media conversation | • The output should answer: what is known, what is contested, and where are the gaps?",
+  },
+
+  {
+    title: "Writing a survey",
+    constraints:
+      "Design a survey instrument for a specific user population | • Stakeholders have a long list of questions they want included | • Output: a finalized question set with response scales, skip logic, and demographic items",
+  },
+
+  {
+    title: "Making sense of the analytics",
+    constraints:
+      "A product has been live for six months | • Data includes page views, click paths, bounce rates, session duration, and conversion funnels; multiple segments | • Output: a summary of key patterns, anomalies, and unanswered questions the analytics alone cannot resolve",
+  },
+
+  {
+    title: "What did the survey say?",
+    constraints:
+      "A survey has been fielded, the data is back | • Closed-ended responses (numeric, categorical) and open-ended text comments from several hundred respondents | • Output: findings that connect the quantitative patterns with the qualitative themes",
+  },
+
+  {
+    title: "Analyzing the interviews",
+    constraints:
+      "A set of in-depth interviews has been conducted and transcribed | • There are 8–15 transcripts, each about an hour long | • The analysis needs to be systematic and defensible | • Output: a thematic framework with supporting evidence",
+  },
+
+  {
+    title: "What went wrong in the usability test?",
+    constraints:
+      "A usability test has been completed with 5–8 participants | • Session recordings, task success/failure rates, time-on-task, error counts, and observer notes | • Output: prioritized findings with severity ratings and design recommendations",
+  },
+
+  {
+    title: "Planning the interviews",
+    constraints:
+      "Design an in-depth interview study for a specific user population and research question | • Recruitment screener, interview protocol, and analysis plan | • Output: a complete study design ready for ethics review or stakeholder approval",
+  },
+
+  {
+    title: "Planning a usability test",
+    constraints:
+      "Design a moderated usability test for a product or prototype | • Test protocol, task scenarios, and measurement plan | • Output: a complete test plan including task descriptions, success criteria, and data collection instruments",
+  },
+
+  {
+    title: "Expert review of the interface",
+    constraints:
+      "Evaluate an existing interface or prototype against established usability principles | • The review must be systematic and cover the entire interface: heuristic violations, best practices, and opinions | • Output: a prioritized list of findings with severity ratings and the heuristic violated",
+  },
+
+  {
+    title: "Getting the report ready",
+    constraints:
+      "The research is done and findings have been drafted, but the deliverable is not edited | • Consistent formatting • Accurate citations <br> • Complete and valid references <br> • All sections present and logically ordered <br> • Clear and professional language | • Output: a polished deliverable suitable for stakeholders, leadership, or publication",
+  },
+
+  {
+    title: "Processing the test recordings",
+    constraints:
+      "The usability test sessions are complete and you have the raw recordings | • Screen recordings, think-aloud audio, and notes from one or more observers | • Output: a structured session-by-session log identifying critical incidents, errors, hesitations, workarounds, and surprises",
+  },
+
+  {
+    title: "",
+    constraints:
+      "<br> <br> <br> (use a sticky note <br> to make this your own <br> scenario)",
+  },
+
+  {
+    title: "Visual Studio Code local agent (1/3)",
+    dark: true,
+    hue: 240,
+    constraints:
+      "Interactive agent in either VS Code chat view or agents window. <br> Has full editor access. <br> (Note: Copilot CLI, Cloud, and Claude are separate harnesses available in the same UIs.)",
+  },
+  {
+    title: "Visual Studio Code local agent (2/3)",
+    dark: true,
+    hue: 240,
+    constraints:
+      "Nine (9) tool categories available: | • reads and searches files • runs commands | • accesses the web • controls a browser | • writes and edits files • manages GitHub | • asks the user questions | • manages notebooks • editor diagnostics",
+  },
+  {
+    title: "Visual Studio Code local agent (3/3)",
+    dark: true,
+    hue: 240,
+    constraints:
+      "Delegation available: | • can spawn subagents | • delegates work to cloud | • with planning | • auto-approving tools | • requiring tool approval",
+  },
+  {
+    title: "GitHub Copilot CLI (1/3)",
+    dark: true,
+    hue: 30,
+    constraints:
+      "Terminal-native agent in either VS Code terminal or agents window, or the GitHub Copilot desktop app. <br> Interactive or scripted. <br> Supports scheduled tasks. <br> Usage within GitHub Copilot app auto-approves tools by default.",
+  },
+  {
+    title: "GitHub Copilot CLI (2/3)",
+    dark: true,
+    hue: 30,
+    constraints:
+      "Seven (7) tool categories available: | • reads and searches files • runs commands | • accesses the web • controls a browser | • writes and edits files • manages GitHub | • asks the user questions ",
+  },
+  {
+    title: "GitHub Copilot CLI (3/3)",
+    dark: true,
+    hue: 30,
+    constraints:
+      "Delegation available: | • can spawn subagents | • delegates work to cloud | • with planning | • auto-approving tools | • requiring tool approval",
+  },
+  {
+    title: "GitHub Copilot cloud agent (1/3)",
+    dark: true,
+    hue: 50,
+    constraints:
+      "Autonomous agent in GitHub Actions. Assign an issue, get a pull request back. <br> Supports scheduled tasks and response to GitHub events (pull requests, issues).",
+  },
+  {
+    title: "GitHub Copilot cloud agent (2/3)",
+    dark: true,
+    hue: 50,
+    constraints:
+      "Five (5) tool categories available: | • reads and searches files • runs commands | • controls a browser | • writes and edits files | • manages GitHub (read-only by default)",
+  },
+  {
+    title: "GitHub Copilot cloud agent (3/3)",
+    dark: true,
+    hue: 50,
+    constraints:
+      "Delegation available: | • with planning | • auto-approving tools",
+  },
 
 ];

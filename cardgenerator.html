@@ -41,7 +41,6 @@
 	
 	
 	<script type="text/javascript" src="js/vendor/jquery-2.1.4.min.js"></script>
-	<script type="text/javascript" src="js/vendor/jquery-ui.min.js"></script>
 	
 
 <script type="text/javascript" src="js/parsing.js"></script>
@@ -52,5 +51,46 @@
 
 	<script type="text/javascript" src="js/app.js"></script>
 	
+<script src="js/vendor/dom-to-image-more-3.10.0.min.js"></script>
+<script src="js/vendor/jszip-3.10.1.min.js"></script>
+<script src="js/vendor/FileSaver-2.0.5.min.js"></script>
+
+<script>
+  async function exportAllCards() {
+    const cards = document.querySelectorAll('.card');
+    const zip = new JSZip();
+    let succeeded = 0;
+    let failed = 0;
+
+    for (let i = 0; i < cards.length; i++) {
+      try {
+        const dataUrl = await domtoimage.toPng(cards[i]);
+        const base64 = dataUrl.replace(/^data:image\/png;base64,/, '');
+        zip.file(`card_${String(i).padStart(3, '0')}.png`, base64, { base64: true });
+        succeeded++;
+      } catch (err) {
+        console.warn(`card_${i} failed:`, err);
+        failed++;
+        // optional retry once after a short delay
+        await new Promise(r => setTimeout(r, 200));
+        try {
+          const dataUrl = await domtoimage.toPng(cards[i]);
+          const base64 = dataUrl.replace(/^data:image\/png;base64,/, '');
+          zip.file(`card_${String(i).padStart(3, '0')}.png`, base64, { base64: true });
+          succeeded++;
+          failed--;
+        } catch (err2) {
+          console.error(`card_${i} failed retry:`, err2);
+        }
+      }
+    }
+
+    const blob = await zip.generateAsync({ type: 'blob' });
+    saveAs(blob, 'generominos.zip');
+    console.log(`Exported ${succeeded} cards, ${failed} failed`);
+  }
+</script>
+<button onclick="exportAllCards()">Export All Cards</button>
+
 </body>
 </html>

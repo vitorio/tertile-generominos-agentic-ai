@@ -159,6 +159,8 @@ var Card = Class.extend({
 
 		this.input = parseSockets(data.input);
 		this.output = parseSockets(data.output);
+		this.modIn = parseSockets(data.modIn);
+		this.modOut = parseSockets(data.modOut);
 
 
 		this.type = "transformation";
@@ -172,7 +174,9 @@ var Card = Class.extend({
 		if (this.output.length === 0 && this.input.length === 0) {
 			this.type = "mod";
 
-			if (this.modIn !== undefined)
+			if (this.modTransform !== undefined)
+				this.type = "transformmod";
+			else if (this.modIn.length > 0)
 				this.type = "inputmod";
 			else
 				this.type = "outputmod";
@@ -198,12 +202,12 @@ var Card = Class.extend({
 
 
 		if (label === "input") {
-			if (this.modIn) {
-				createTile(socketsL, this.modIn)
-			}
-			if (this.modOut) {
-				createTile(socketsR, this.modOut)
-			}
+			$.each(this.modIn, function (i, socket) {
+				createTile(socketsL, socket.type, socket.optional);
+			});
+			$.each(this.modOut, function (i, socket) {
+				createTile(socketsR, socket.type, socket.optional);
+			});
 		}
 
 
@@ -267,6 +271,12 @@ var Card = Class.extend({
 
 		card.addClass("card-" + this.type);
 
+		if (this.borderHue !== undefined) {
+			card.addClass("card-bordered");
+			card.css({
+				border: "10px solid hsla(" + this.borderHue + ", 70%, 22%, 1)",
+			});
+		}
 
 		var inputRow = $("<div/>", {
 			class: "input-row socket-row",
